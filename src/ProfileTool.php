@@ -32,8 +32,12 @@ class ProfileTool extends BaseTool
             return view('nova-profile-tool::navigation');
     }
 
+    /**
+     * @return $this
+     */
     public function hideNavigation()
     {
         $this->shouldRenderNavigation = false;
+        return $this;
     }
 }
