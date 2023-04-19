@@ -26,7 +26,7 @@ class ToolServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-          __DIR__.'/../lang' => resource_path('lang/vendor/nova-profile-tool'),
+          __DIR__.'/../resources/lang' => base_path('lang/vendor/nova-profile-tool'),
         ]);
 
         $this->app->booted(function () {
