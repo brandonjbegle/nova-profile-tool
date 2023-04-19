@@ -1,6 +1,6 @@
 <template>
     <loading-view :loading="loading">
-        <heading class="mb-3">{{__("Update Profile")}}</heading>
+        <heading class="mb-3">{{ __("Update Profile") }}</heading>
 
         <card class="overflow-hidden">
             <form @submit.prevent="saveProfile">
@@ -23,7 +23,7 @@
                 <!-- Create Button -->
                 <div class="bg-30 flex px-8 py-4">
                     <button dusk="create-and-add-another-button" class="ml-auto btn btn-default btn-primary mr-3">
-                        {{__('Save Profile')}}
+                        {{ __('Save Profile') }}
                     </button>
                 </div>
             </form>
@@ -32,83 +32,82 @@
 </template>
 
 <script>
-    import { Errors, Minimum } from 'laravel-nova'
+import {Errors, Minimum} from 'laravel-nova'
 
-    export default {
+export default {
 
-        data: () => ({
-            loading: true,
-            fields: [],
-            validationErrors: new Errors(),
-        }),
+    data: () => ({
+        loading: true,
+        fields: [],
+        validationErrors: new Errors(),
+    }),
 
-        created() {
-            this.getFields()
+    created() {
+        this.getFields()
+    },
+
+    methods: {
+        /**
+         * Get the available fields for the resource.
+         */
+        async getFields() {
+            this.fields = []
+
+            const {data: fields} = await Nova.request().get(
+                '/nova-vendor/nova-profile-tool/'
+            )
+
+            this.fields = fields
+            this.loading = false
         },
 
-        methods: {
-            /**
-             * Get the available fields for the resource.
-             */
-            async getFields() {
-                this.fields = []
-
-                const { data: fields } = await Nova.request().get(
-                    '/nova-vendor/nova-profile-tool/'
-                )
-
-                console.log(fields)
-
-                this.fields = fields
+        /**
+         * Saves the user's profile
+         */
+        async saveProfile() {
+            try {
+                this.loading = true
+                const response = await this.createRequest()
                 this.loading = false
-            },
 
-            /**
-             * Saves the user's profile
-             */
-            async saveProfile() {
-                try {
-                    this.loading = true
-                    const response = await this.createRequest()
-                    this.loading = false
-
-                    this.$toasted.show(
-                        this.__('Your profile has been saved!'),
-                        { type: 'success' }
-                    )
-
-                    // Reset the form by refetching the fields
-                    this.getFields()
-
-                    this.validationErrors = new Errors()
-                } catch (error) {
-                    this.loading = false
-                    if (error.response.status == 422) {
-                        this.validationErrors = new Errors(error.response.data.errors)
-                    }
-                }
-            },
-
-            /**
-             * Send a create request to update the user's profile data
-             */
-            createRequest() {
-                return Nova.request().post(
-                    '/nova-vendor/nova-profile-tool/',
-                    this.createResourceFormData()
+                this.$toasted.show(
+                    this.__('Your profile has been saved!'),
+                    {type: 'success'}
                 )
-            },
 
-            /**
-             * Create the form data for creating the resource.
-             */
-            createResourceFormData() {
-                return _.tap(new FormData(), formData => {
-                    _.each(this.fields, field => {
-                        field.fill(formData)
-                    })
-                })
-            },
+                // Reset the form by refetching the fields
+                this.getFields()
+
+                this.validationErrors = new Errors()
+            } catch (error) {
+                console.log(error);
+                this.loading = false
+                if (error.response.status == 422) {
+                    this.validationErrors = new Errors(error.response.data.errors)
+                }
+            }
         },
-    }
+
+        /**
+         * Send a create request to update the user's profile data
+         */
+        createRequest() {
+            return Nova.request().post(
+                '/nova-vendor/nova-profile-tool/',
+                this.createResourceFormData()
+            )
+        },
+
+        /**
+         * Create the form data for creating the resource.
+         */
+        createResourceFormData() {
+            return _.tap(new FormData(), formData => {
+                _.each(this.fields, field => {
+                    field.fill(formData)
+                })
+            })
+        },
+    },
+}
 </script>
