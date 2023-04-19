@@ -43,18 +43,6 @@ Click on the "Profile" menu item in your Nova app to see the tool provided by th
 composer test
 ```
 
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Security
-
-If you discover any security related issues, please email patrick@runline.nl instead of using the issue tracker.
-
 ## Credits
 
 - [Patrick Bergman](https://github.com/patrickbergman)
