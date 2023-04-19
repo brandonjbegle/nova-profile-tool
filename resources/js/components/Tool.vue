@@ -71,7 +71,7 @@ export default {
             this.loading = true;
 
             this.createRequest()
-                .then(res => {
+                .then(() => {
                     this.loading = false;
                     this.$toasted.show(
                         this.__('Your profile has been saved!'),
@@ -86,7 +86,7 @@ export default {
                         this.validationErrors = new Errors(error.response.data.errors)
                     }
                     this.$toasted.show(
-                        error.message,
+                        this.__('There was an error submitting the form.'),
                         {type: 'error'}
                     )
                 })

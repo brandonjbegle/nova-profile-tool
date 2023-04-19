@@ -361,7 +361,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                             case 0:
                                 this.loading = true;
 
-                                this.createRequest().then(function (res) {
+                                this.createRequest().then(function () {
                                     _this.loading = false;
                                     _this.$toasted.show(_this.__('Your profile has been saved!'), { type: 'success' });
                                     _this.getFields();
@@ -371,7 +371,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                     if (error.response.status === 422) {
                                         _this.validationErrors = new __WEBPACK_IMPORTED_MODULE_1_laravel_nova__["Errors"](error.response.data.errors);
                                     }
-                                    _this.$toasted.show(error.message, { type: 'error' });
+                                    _this.$toasted.show(_this.__('There was an error submitting the form.'), { type: 'error' });
                                 });
 
                             case 2:
