@@ -24,8 +24,8 @@ class ToolController extends Controller
                 $field['thumbnailUrl'] = Storage::disk('public')->url($field['value']);
             }
 
-            $field['name'] = ucfirst(__("nova-profile-tool.attributes." . $field['attribute']));
-            $field['indexName'] = ucfirst(__("nova-profile-tool.attributes." . $field['attribute']));
+            $field['name'] = ucfirst(__("nova-profile-tool::navigation." . $field['attribute']));
+            $field['indexName'] = ucfirst(__("nova-profile-tool::navigation." . $field['attribute']));
 
             $fields[] = $field;
         }
