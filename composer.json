@@ -30,18 +30,18 @@
   },
   "autoload": {
     "psr-4": {
-      "Runline\\ProfileTool\\": "src/"
+      "BrandonJBegle\\ProfileTool\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Runline\\ProfileTool\\Tests\\": "tests"
+      "BrandonJBegle\\ProfileTool\\Tests\\": "tests"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Runline\\ProfileTool\\ToolServiceProvider"
+        "BrandonJBegle\\ProfileTool\\ToolServiceProvider"
       ]
     }
   },

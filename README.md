@@ -28,7 +28,7 @@ public function tools()
 {
     return [
         // ...
-        new \Runline\ProfileTool\ProfileTool,
+        new \BrandonJBegle\ProfileTool\ProfileTool,
     ];
 }
 ```

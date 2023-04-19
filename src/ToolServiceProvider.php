@@ -1,12 +1,12 @@
 <?php
 
-namespace Runline\ProfileTool;
+namespace BrandonJBegle\ProfileTool;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Runline\ProfileTool\Http\Middleware\Authorize;
+use BrandonJBegle\ProfileTool\Http\Middleware\Authorize;
 
 class ToolServiceProvider extends ServiceProvider
 {

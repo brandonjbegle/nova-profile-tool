@@ -1,9 +1,9 @@
 <?php
 
-namespace Runline\ProfileTool\Tests;
+namespace BrandonJBegle\ProfileTool\Tests;
 
-use Runline\ProfileTool\Http\Controllers\ToolController;
-use Runline\ProfileTool\ProfileTool;
+use BrandonJBegle\ProfileTool\Http\Controllers\ToolController;
+use BrandonJBegle\ProfileTool\ProfileTool;
 use Symfony\Component\HttpFoundation\Response;
 
 class ToolControllerTest extends TestCase
