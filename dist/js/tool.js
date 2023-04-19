@@ -288,6 +288,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
 
 
 
@@ -27574,6 +27575,7 @@ var render = function() {
                       errors: _vm.validationErrors,
                       "resource-name": _vm.resourceName,
                       field: field,
+                      "field-name": field.attribute,
                       "via-resource": _vm.viaResource,
                       "via-resource-id": _vm.viaResourceId,
                       "via-relationship": _vm.viaRelationship

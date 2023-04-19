@@ -16,6 +16,7 @@
                         :errors="validationErrors"
                         :resource-name="resourceName"
                         :field="field"
+                        :field-name="field.attribute"
                         :via-resource="viaResource"
                         :via-resource-id="viaResourceId"
                         :via-relationship="viaRelationship"
