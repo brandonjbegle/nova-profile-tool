@@ -287,8 +287,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
-//
 
 
 
@@ -27559,11 +27557,6 @@ var render = function() {
             _c("validation-errors", {
               attrs: { errors: _vm.validationErrors }
             }),
-            _vm._v(
-              "\n\n            " +
-                _vm._s(_vm.validationErrors) +
-                "\n\n            "
-            ),
             _vm._v(" "),
             _vm._l(_vm.fields, function(field) {
               return _c(
