@@ -350,47 +350,33 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
          */
         saveProfile: function () {
             var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
-                var response;
+                var _this = this;
+
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
                             case 0:
-                                _context2.prev = 0;
-
                                 this.loading = true;
-                                _context2.next = 4;
-                                return this.createRequest();
 
-                            case 4:
-                                response = _context2.sent;
+                                this.createRequest().then(function (res) {
+                                    _this.loading = false;
+                                    _this.$toasted.show(_this.__('Your profile has been saved!'), { type: 'success' });
+                                    _this.getFields();
+                                    _this.validationErrors = new __WEBPACK_IMPORTED_MODULE_1_laravel_nova__["Errors"]();
+                                }).catch(function (error) {
+                                    _this.loading = false;
+                                    if (error.response.status === 422) {
+                                        _this.validationErrors = new __WEBPACK_IMPORTED_MODULE_1_laravel_nova__["Errors"](error.response.data.errors);
+                                    }
+                                    _this.$toasted.show(error.message, { type: 'danger' });
+                                });
 
-                                this.loading = false;
-
-                                this.$toasted.show(this.__('Your profile has been saved!'), { type: 'success' });
-
-                                // Reset the form by refetching the fields
-                                this.getFields();
-
-                                this.validationErrors = new __WEBPACK_IMPORTED_MODULE_1_laravel_nova__["Errors"]();
-                                _context2.next = 16;
-                                break;
-
-                            case 11:
-                                _context2.prev = 11;
-                                _context2.t0 = _context2['catch'](0);
-
-                                console.log(_context2.t0);
-                                this.loading = false;
-                                if (_context2.t0.response.status == 422) {
-                                    this.validationErrors = new __WEBPACK_IMPORTED_MODULE_1_laravel_nova__["Errors"](_context2.t0.response.data.errors);
-                                }
-
-                            case 16:
+                            case 2:
                             case 'end':
                                 return _context2.stop();
                         }
                     }
-                }, _callee2, this, [[0, 11]]);
+                }, _callee2, this);
             }));
 
             function saveProfile() {
@@ -413,10 +399,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
          * Create the form data for creating the resource.
          */
         createResourceFormData: function createResourceFormData() {
-            var _this = this;
+            var _this2 = this;
 
             return _.tap(new FormData(), function (formData) {
-                _.each(_this.fields, function (field) {
+                _.each(_this2.fields, function (field) {
                     field.fill(formData);
                 });
             });

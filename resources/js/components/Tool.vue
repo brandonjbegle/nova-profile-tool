@@ -65,27 +65,28 @@ export default {
          * Saves the user's profile
          */
         async saveProfile() {
-            try {
-                this.loading = true
-                const response = await this.createRequest()
-                this.loading = false
+            this.loading = true;
 
-                this.$toasted.show(
-                    this.__('Your profile has been saved!'),
-                    {type: 'success'}
-                )
-
-                // Reset the form by refetching the fields
-                this.getFields()
-
-                this.validationErrors = new Errors()
-            } catch (error) {
-                console.log(error);
-                this.loading = false
-                if (error.response.status == 422) {
-                    this.validationErrors = new Errors(error.response.data.errors)
-                }
-            }
+            this.createRequest()
+                .then(res => {
+                    this.loading = false;
+                    this.$toasted.show(
+                        this.__('Your profile has been saved!'),
+                        {type: 'success'}
+                    )
+                    this.getFields()
+                    this.validationErrors = new Errors()
+                })
+                .catch(error => {
+                    this.loading = false;
+                    if (error.response.status === 422) {
+                        this.validationErrors = new Errors(error.response.data.errors)
+                    }
+                    this.$toasted.show(
+                        error.message,
+                        {type: 'danger'}
+                    )
+                })
         },
 
         /**
