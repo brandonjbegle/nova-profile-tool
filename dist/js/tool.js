@@ -286,6 +286,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
 
 
 
@@ -368,7 +370,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                     if (error.response.status === 422) {
                                         _this.validationErrors = new __WEBPACK_IMPORTED_MODULE_1_laravel_nova__["Errors"](error.response.data.errors);
                                     }
-                                    _this.$toasted.show(error.message, { type: 'danger' });
+                                    _this.$toasted.show(error.message, { type: 'error' });
                                 });
 
                             case 2:
@@ -27556,6 +27558,11 @@ var render = function() {
             _c("validation-errors", {
               attrs: { errors: _vm.validationErrors }
             }),
+            _vm._v(
+              "\n\n            " +
+                _vm._s(_vm.validationErrors) +
+                "\n\n            "
+            ),
             _vm._v(" "),
             _vm._l(_vm.fields, function(field) {
               return _c(

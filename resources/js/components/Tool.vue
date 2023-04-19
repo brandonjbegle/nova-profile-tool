@@ -7,6 +7,8 @@
                 <!-- Validation Errors -->
                 <validation-errors :errors="validationErrors"/>
 
+                {{ validationErrors}}
+
                 <!-- Fields -->
                 <div v-for="field in fields">
                     <component
@@ -84,7 +86,7 @@ export default {
                     }
                     this.$toasted.show(
                         error.message,
-                        {type: 'danger'}
+                        {type: 'error'}
                     )
                 })
         },
