@@ -36,7 +36,11 @@
 import {Errors, Minimum} from 'laravel-nova'
 
 export default {
-
+    metaInfo() {
+        return {
+            title: 'Profile',
+        }
+    },
     data: () => ({
         loading: true,
         fields: [],
