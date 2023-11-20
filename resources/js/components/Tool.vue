@@ -99,7 +99,7 @@ export default {
          */
         createRequest() {
             return Nova.request().post(
-                '/nova-vendor/nova-profile-tool/',
+                '/nova-vendor/nova-profile-tool',
                 this.createResourceFormData()
             )
         },
