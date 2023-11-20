@@ -1,6 +1,6 @@
 <?php
 
-namespace Runline\ProfileTool;
+namespace BrandonJBegle\ProfileTool;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool as BaseTool;
@@ -12,19 +12,32 @@ class ProfileTool extends BaseTool
      *
      * @return void
      */
+
+    protected $shouldRenderNavigation;
+
     public function boot()
     {
-        Nova::script('nova-profile-tool', __DIR__.'/../dist/js/tool.js');
-        Nova::style('nova-profile-tool', __DIR__.'/../dist/css/tool.css');
+        Nova::script('nova-profile-tool', __DIR__ . '/../dist/js/tool.js');
+        Nova::style('nova-profile-tool', __DIR__ . '/../dist/css/tool.css');
     }
 
     /**
      * Build the view that renders the navigation links for the tool.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\View\View | void
      */
     public function renderNavigation()
     {
-        return view('nova-profile-tool::navigation');
+        if ($this->shouldRenderNavigation)
+            return view('nova-profile-tool::navigation');
+    }
+
+    /**
+     * @return $this
+     */
+    public function hideNavigation()
+    {
+        $this->shouldRenderNavigation = false;
+        return $this;
     }
 }

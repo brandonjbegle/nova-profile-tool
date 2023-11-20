@@ -1,10 +1,10 @@
 <?php
 
-namespace Runline\ProfileTool\Tests;
+namespace BrandonJBegle\ProfileTool\Tests;
 
 use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Runline\ProfileTool\ToolServiceProvider;
+use BrandonJBegle\ProfileTool\ToolServiceProvider;
 
 abstract class TestCase extends Orchestra
 {

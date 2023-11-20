@@ -1,6 +1,6 @@
 <?php
 
-namespace Runline\ProfileTool\Http\Controllers;
+namespace BrandonJBegle\ProfileTool\Http\Controllers;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Controller;
@@ -24,8 +24,8 @@ class ToolController extends Controller
                 $field['thumbnailUrl'] = Storage::disk('public')->url($field['value']);
             }
 
-            $field['name'] = ucfirst(__("validation.attributes." . $field['attribute']));
-            $field['indexName'] = ucfirst(__("validation.attributes." . $field['attribute']));
+            $field['name'] = ucfirst(__("nova-profile-tool::navigation." . $field['attribute']));
+            $field['indexName'] = ucfirst(__("nova-profile-tool::navigation." . $field['attribute']));
 
             $fields[] = $field;
         }
